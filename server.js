@@ -34,6 +34,24 @@ app.post('/products', (req, res) => {
   res.status(201).json(product);
 });
 
+// Obtener la lista de todos los productos
+app.get('/products', (req, res) => {
+  res.json(products);
+});
+
+// Obtener un producto por su id
+app.get('/products/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const product = products.find((p) => p.id === id);
+
+  // Si no existe un producto con ese id, responde con error 404
+  if (!product) {
+    return res.status(404).json({ error: 'Producto no encontrado' });
+  }
+
+  res.json(product);
+});
+
 // Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
