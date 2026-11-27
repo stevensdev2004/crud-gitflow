@@ -25,6 +25,7 @@ Proyecto de Programación III (ITLA) para practicar Git y Git Flow.
 | GET | /products/:id | Obtiene un producto por su id |
 | POST | /products | Crea un producto |
 | PUT | /products/:id | Actualiza un producto existente |
+| DELETE | /products/:id | Elimina un producto existente |
 
 Ejemplo de cuerpo para POST y PUT:
 

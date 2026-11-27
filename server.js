@@ -81,6 +81,21 @@ app.put('/products/:id', (req, res) => {
   res.json(product);
 });
 
+// Eliminar un producto por su id
+app.delete('/products/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const index = products.findIndex((p) => p.id === id);
+
+  // Si no existe un producto con ese id, responde con error 404
+  if (index === -1) {
+    return res.status(404).json({ error: 'Producto no encontrado' });
+  }
+
+  // Quita el producto del arreglo y lo devuelve en la respuesta
+  const deleted = products.splice(index, 1)[0];
+  res.json({ message: 'Producto eliminado', product: deleted });
+});
+
 // Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
