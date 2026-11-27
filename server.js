@@ -34,6 +34,11 @@ app.post('/products', (req, res) => {
   res.status(201).json(product);
 });
 
+// Obtener la lista de todos los productos
+app.get('/products', (req, res) => {
+  res.json(products);
+});
+
 // Inicia el servidor
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
