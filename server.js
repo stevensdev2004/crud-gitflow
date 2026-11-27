@@ -18,7 +18,18 @@ app.get('/', (req, res) => {
 // Crear un producto
 app.post('/products', (req, res) => {
   const { name, price } = req.body;
-  const product = { id: nextId++, name, price };
+
+  // Valida que el nombre sea un texto y no esté vacío
+  if (typeof name !== 'string' || name.trim() === '') {
+    return res.status(400).json({ error: 'El nombre es obligatorio' });
+  }
+
+  // Valida que el precio sea un número mayor o igual a 0
+  if (typeof price !== 'number' || price < 0) {
+    return res.status(400).json({ error: 'El precio debe ser un número mayor o igual a 0' });
+  }
+
+  const product = { id: nextId++, name: name.trim(), price };
   products.push(product);
   res.status(201).json(product);
 });
