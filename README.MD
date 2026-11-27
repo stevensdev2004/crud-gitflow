@@ -16,3 +16,16 @@ Proyecto de Programación III (ITLA) para practicar Git y Git Flow.
 - qa: pruebas
 - dev: desarrollo
 - feature/: ramas de trabajo
+
+## Rutas de la API
+
+| Método | Ruta | Descripción |
+| --- | --- | --- |
+| GET | /products | Lista todos los productos |
+| GET | /products/:id | Obtiene un producto por su id |
+| POST | /products | Crea un producto |
+| PUT | /products/:id | Actualiza un producto existente |
+
+Ejemplo de cuerpo para POST y PUT:
+
+{"name": "Laptop", "price": 500}
